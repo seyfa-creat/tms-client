@@ -1,0 +1,21 @@
+kdir tms-client && cd tms-client
+mkdir models
+npm init-y
+npm install typescript @js-temporal/polyfill @types/node--save
+npx tsc--init
+Openthe generated tsconfig.json and set the following flags:
+{
+}
+"compilerOptions": {
+"target": "es2025",
+"module": "nodenext",
+"strict": true,
+"noImplicitAny": true,
+"strictNullChecks": true,
+"noUncheckedIndexedAccess": true
+}
+}
+npx tsc--showConfig
+npx tsc--outDir dist
+further reading https://www.typescriptlang.org/tsconfig/
+
