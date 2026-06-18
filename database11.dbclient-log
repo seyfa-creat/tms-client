@@ -1,0 +1,28 @@
+using Microsoft.EntityFrameworkCore;
+using TmsApi.Entities;
+namespace TmsApi.Data;
+public class TmsDbContext(DbContextOptions<TmsDbContext> options) : DbC
+ontext(options)
+{
+}
+public DbSet<Student> Students => Set<Student>();
+public DbSet<Course> Courses => Set<Course>();
+public DbSet<Enrollment> Enrollments => Set<Enrollment>();
+add the DbContext registration using Npgsql:
+using Microsoft.EntityFrameworkCore;
+using TmsApi.Data;
+// Register TmsDbContext scoped for incoming HTTP requests
+builder.Services.AddDbContext<TmsDbContext>(options =>
+options.UseNpgsql(builder.Configuration.GetConnectionString("TmsDat
+abase")));{
+"Logging": {
+"LogLevel": {
+"Default": "Information",
+"Microsoft.AspNetCore": "Warning"
+}
+},
+"ConnectionStrings": {
+"TmsDatabase": "Host=localhost;Database=TmsDb;Username=postgres;Pas
+sword=your_postgres_password"
+}
+}
